@@ -1,0 +1,101 @@
+// Place all the styles related to the documents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.inputDnD {
+  .form-control-file {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 6em;
+    outline: none;
+    visibility: hidden;
+    cursor: pointer;
+    background-color: #c61c23;
+    box-shadow: 0 0 5px solid currentColor;
+    &:before {
+      content: attr(data-title);
+      position: absolute;
+      top: 0.5em;
+      left: 0;
+      width: 100%;
+      min-height: 6em;
+      line-height: 2em;
+      padding-top: 1.5em;
+      opacity: 1;
+      visibility: visible;
+      text-align: center;
+      border: 0.25em dashed currentColor;
+      transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+      overflow: hidden;
+    }
+    &:hover {
+      &:before {
+        border-style: solid;
+        box-shadow: inset 0px 0px 0px 0.25em currentColor;
+      }
+    }
+  }
+}
+
+// PRESENTATIONAL CSS
+body {
+  background-color: #f7f7f9;
+}
+
+.parsley-errors-list li.parsley-required{
+  padding-top: 7px;
+  font-weight: 500;
+  color: #f80c0c;
+}
+
+
+.parsley-errors-list li.parsley-min{
+  padding-top: 7px;
+  font-weight: 500;
+  color: #f80c0c;
+}
+
+.parsley-errors-list li.parsley-maxlength{
+  padding-top: 7px;
+  font-weight: 500;
+  color: #f80c0c;
+}
+
+.parsley-errors-list li.parsley-type{
+  padding-top: 7px;
+  font-weight: 500;
+  color: #f80c0c;
+}
+
+.parsley-errors-list li.parsley-pattern{
+  padding-top: 7px;
+  font-weight: 500;
+  color: #f80c0c;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #f80c0c;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+  color: #f80c0c;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}

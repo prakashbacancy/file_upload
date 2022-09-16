@@ -1,0 +1,49 @@
+<div class="container">
+  <%= form_for @document, html: {"data-parsley-validate" => '', class: 'document-form'} do |form| %>
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div class="mb-6">
+          <%= form.label :name, class: "label" %>
+          <%= form.text_field :name, class: "input", required: true %>
+        </div>
+      </div>
+      <div class="col-md-12">
+<!--         <div class="file-upload-wrapper">
+          <%#= form.label :document_file, class: "file-upload", id: 'input-file-max-fs' %>
+          <%#= form.file_field :document_file, class: "input" %>
+        </div> -->
+        <div class="container p-y-1">
+          <div class="row m-b-1">
+            <div class="col-sm-6">
+              <div class="form-group inputDnD">
+                <%= form.label :document_file, class: "sr-only", id: 'input-file-max-fs' %>
+                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold", onchange: "readUrl(this)", data: {title: 'Drag and drop a file'}, id: 'inputFile', accept: "Image/*", 'data-parsley-fileextension': 'png,jpeg,jpg,ico,svg,gif', 'data-parsley-fileextension-message': "Please select image file", 'data-parsley-trigger': 'change', 'data-parsley-errors-container': ".available_error" %> 
+              </div>
+              <button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('inputFile').click()">Add Image</button>
+              <div class="available_error mt-2"></div>
+            </div>
+          </div>
+      </div>
+
+      <div class="mb-6 mt-4">
+        <%= form.submit  class: "btn-default btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+    function readUrl(input) {
+    if (input.files && input.files[0]) {
+      let reader = new FileReader();
+      debugger
+      reader.onload = (e) => {
+        let imgData = e.target.result;
+        let imgName = input.files[0].name;
+        input.setAttribute("data-title", imgName);
+        console.log(e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+
+  }
+</script>
