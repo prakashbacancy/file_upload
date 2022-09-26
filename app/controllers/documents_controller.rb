@@ -21,9 +21,10 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to documents_path, notice: 'document was successfully created.' }
+        format.html { redirect_to documents_path, notice: 'File was successfully created.' }
         format.json { render :index, status: :created, location: @document }
       else
+        flash[:error] = error_message(@document)
         format.html { render :new }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
@@ -33,7 +34,7 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'document was successfully updated.' }
+        format.html { redirect_to @document, notice: 'File was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
         format.html { render :edit }
@@ -45,7 +46,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to Documents_url, notice: 'document was successfully destroyed.' }
+      format.html { redirect_to Documents_url, notice: 'File was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -57,7 +58,11 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:name, :document_file)
+      params.require(:document).permit(:name, :document_file, :file_type, :user_id)
+    end
+
+    def error_message(object)
+      object.errors.full_messages.join(', ')
     end
 end
 

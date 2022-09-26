@@ -29,7 +29,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
   def azure_activedirectory_v2
     response_params = request.env['omniauth.auth']['info']
-    @user = User.find_by!(email: response_params['email'])
+    ENV['AZURE'] = 'true'
+    @user = User.find_or_create_by!(email: response_params['email'])
     
     if @user&.persisted?
       sign_in_and_redirect @user, event: :authentication

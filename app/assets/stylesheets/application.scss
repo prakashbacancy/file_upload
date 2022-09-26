@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+#flashMessage{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.p-9{ padding:.9rem!important }
+.alert-error {
+  background-color: #dd4b39 !important
+}
+.form-control-file {
+  background-image: url('file.png');
+}

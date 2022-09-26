@@ -1,2 +1,32 @@
-<h1>Homes#index</h1>
-<p>Find me in app/views/homes/index.html.erb</p>
+<div class="container">
+	<div class="row mt-5 mt-5 mb-2">
+		<div class="col-sm-4">
+			<h4><b><%=params[:file_type].capitalize %> Files</b></h4>
+		</div>
+		<div class="col-sm-4">
+			<%= link_to "Add #{params[:file_type].capitalize} File", new_document_path(file_type: params[:file_type]), class: 'btn btn-primary float-right' %>
+		</div>
+	</div>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">File Name</th>
+	      <th scope="col">Created At</th>
+	      <th scope="col">Download</th>
+	      <th scope="col">User</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			<% @documents.each do |document| %>
+		    <tr>
+		      <td><%= document.id %></td>
+		      <td><%= document&.name || document&.document_file&.filename %></td>
+		      <td><%= document.created_at.strftime("%m-%d-%Y") %></td>
+		      <td><%= image_tag "download.png", width: '20'%></td>
+		      <td><%= "Abhi" || document.user&.full_name %>
+		    </tr>
+		  <% end %>
+	  </tbody>
+	</table>
+</div>

@@ -2,24 +2,17 @@
   <%= form_for @document, html: {"data-parsley-validate" => '', class: 'document-form'} do |form| %>
     <div class="row mt-5">
       <div class="col-md-12">
-        <div class="mb-6">
-          <%= form.label :name, class: "label" %>
-          <%= form.text_field :name, class: "input", required: true %>
-        </div>
-      </div>
-      <div class="col-md-12">
-<!--         <div class="file-upload-wrapper">
-          <%#= form.label :document_file, class: "file-upload", id: 'input-file-max-fs' %>
-          <%#= form.file_field :document_file, class: "input" %>
-        </div> -->
+        <%= form.hidden_field :file_type, value: params[:file_type] %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
         <div class="container p-y-1">
           <div class="row m-b-1">
             <div class="col-sm-6">
               <div class="form-group inputDnD">
                 <%= form.label :document_file, class: "sr-only", id: 'input-file-max-fs' %>
-                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold", onchange: "readUrl(this)", data: {title: 'Drag and drop a file'}, id: 'inputFile', accept: "Image/*", 'data-parsley-fileextension': 'png,jpeg,jpg,ico,svg,gif', 'data-parsley-fileextension-message': "Please select image file", 'data-parsley-trigger': 'change', 'data-parsley-errors-container': ".available_error" %> 
+
+                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold", onchange: "readUrl(this)", data: {title: 'Drag and drop a file'}, id: 'inputFile', 'data-parsley-fileextension': 'doc,docx,odt,pdf', 'data-parsley-filemaxsize': '1.5', 'data-parsley-fileextension-message': "Please select document file", 'data-parsley-trigger': 'change', 'data-parsley-errors-container': ".available_error" %>
               </div>
-              <button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('inputFile').click()">Add Image</button>
+              <button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('inputFile').click()">Add File</button>
               <div class="available_error mt-2"></div>
             </div>
           </div>
@@ -35,15 +28,47 @@
     function readUrl(input) {
     if (input.files && input.files[0]) {
       let reader = new FileReader();
-      debugger
       reader.onload = (e) => {
         let imgData = e.target.result;
         let imgName = input.files[0].name;
         input.setAttribute("data-title", imgName);
-        console.log(e.target.result);
       }
       reader.readAsDataURL(input.files[0]);
     }
 
   }
+
+  // $(document).ready(function() {
+  //   $('form').parsley({
+  //       validators: {
+  //           filemaxsize: function() {
+  //               return {
+  //                   validate: function (val, max_megabytes, parsleyField) {
+  //                       if (!Modernizr.fileapi) { return true; }
+                        
+  //                       var $file_input = $(parsleyField.element);
+  //                       if ($file_input.is(':not(input[type="file"])')) {
+  //                           console.log("Validation on max file size only works on file input types");
+  //                           return true;
+  //                       }
+                        
+  //                       var max_bytes = max_megabytes * BYTES_PER_MEGABYTE, files = $file_input.get(0).files;
+                        
+  //                       if (files.length == 0) {
+  //                           // No file, so valid. (Required check should ensure file is selected)
+  //                           return true;
+  //                       }
+                        
+  //                       return files.length == 1  && files[0].size <= max_bytes;
+  //                   },
+  //                   priority: 1
+  //               };
+  //           }
+  //       },
+  //       messages: {
+  //           filemaxsize: "The file cannot be more than %s megabytes."
+  //       }
+  //       , excluded: 'input[type=hidden] :disabled'
+  //   });
+  // });
 </script>

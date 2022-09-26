@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers:          
                               %i[azure_activedirectory_v2]
+
+
+  protected
+
+  def password_required?
+    return false if ENV['AZURE']
+    super
+  end
 end
