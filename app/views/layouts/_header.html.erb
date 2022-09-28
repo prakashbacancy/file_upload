@@ -1,9 +1,9 @@
 <header>
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="sign-in.html">
+      <a class="navbar-brand" href="/">
         <!-- <img src="images/logo.svg" alt="logo"> -->
-        <%= image_tag "logo.svg", alt: 'logo' %>
+        <%= image_tag "logo.svg", alt: "logo" %>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -13,10 +13,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Document</a>
+            <a class="nav-link" href="/documents">Document</a>
           </li>
         </ul>
         <form class="d-flex search-wrapper" role="search">
@@ -40,12 +40,14 @@
         </a>
         <div class="dropdown profile-dropdown">
           <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag "user.svg", class: 'user-image' %>
+            <%= image_tag "user.svg", class: "user-image" %>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">My Account</a></li>
             <li><a class="dropdown-item" href="#">Setting</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </li>
           </ul>
         </div>
       </div>
