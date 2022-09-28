@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="d-flex justify-content-between align-items-center mt-5 mt-5 mb-2">
+	<div class="d-flex justify-content-between align-items-center mt-5 mt-5 mb-4">
 		<h4><b><%= params[:file_type]&.capitalize %> Files</b></h4>
 		<%= link_to "Add #{params[:file_type]&.capitalize} File", new_document_path(file_type: params[:file_type]), class: "btn btn-primary py-2" %>
 	</div>

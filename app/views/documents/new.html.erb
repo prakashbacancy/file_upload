@@ -6,22 +6,21 @@
         <div class="col-xl-8 col-md-10 col-12 mx-auto">
           <div class="shadow upload-wrapper">
             <%= form.hidden_field :file_type, value: params[:file_type] %>
-            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%#= form.hidden_field :user_id, value: current_user.id %>
             <h4 class="text-primary mb-2">Add Input File</h4>
             <div class="inputDnD">
               <label class="bg-shadow upload-box cursor-pointer text-black d-block text-center position-relative">
-                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold position-absolute", style: "opacity: 0;", onchange: "readUrl(this)", id: "inputFile", 'data-parsley-fileextension': "doc,docx,odt,pdf", 'data-parsley-filemaxsize': "1.5", 'data-parsley-fileextension-message': "Please select document file", 'data-parsley-trigger': "change", 'data-parsley-errors-container': ".available_error" %>
+                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold position-absolute", style: "opacity: 0;", onchange: "readUrl(this)", id: "inputFile", 'data-parsley-fileextension': "doc,docx,csv,txt", 'data-parsley-filemaxsize': "10", 'data-parsley-fileextension-message': "Please upload valid file", 'data-parsley-trigger': "change", 'data-parsley-errors-container': ".available_error" %>
                 <%= image_tag "upload-icon.svg", alt: "upload icon", class: "mx-auto d-block" %>
                 <%= form.label :document_file, class: "sr-only", id: "input-file-max-fs" %>
-
-                <span class="h6 available_error mt-2"></span>
                 <span class="h6 d-block mt-4" id="file_name">Drag and Drop your file here</span>
                 <span class="h6 d-block my-4 text-muted fw-normal">OR</span>
                 <span class="btn btn-primary btn-sm py-2">Add File</span>
+                <span class="h6 available_error mt-4"></span>
               </label>
             </div>
             <div class="text-center">
-              <%= form.submit class: "text-primary text-decoration-underline mx-auto bg-transparent border-0" %>
+              <%= form.submit class: "btn btn-primary" %>
             </div>
           </div>
         </div>
