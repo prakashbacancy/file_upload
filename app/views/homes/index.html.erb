@@ -21,7 +21,7 @@
 			      <td><%= document&.name || document&.document_file&.filename %></td>
 			      <td><%= document.created_at.strftime("%m-%d-%Y") %></td>
 			      <td><%= image_tag "download.png", width: "20" %></td>
-			      <td><%= "Abhi" || document.user&.full_name %>
+			      <td><%= document.user.full_name.present? ? document.user.full_name : document.user&.email %>
 			    </tr>
 			  <% end %>
 		  </tbody>
