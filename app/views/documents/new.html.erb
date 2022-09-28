@@ -3,17 +3,18 @@
     <div class="row mt-5">
       <div class="col-md-12">
         <%= form.hidden_field :file_type, value: params[:file_type] %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%#= form.hidden_field :user_id, value: current_user.id %>
         <div class="container p-y-1">
           <div class="row m-b-1">
             <div class="col-sm-6">
               <div class="form-group inputDnD">
                 <%= form.label :document_file, class: "sr-only", id: 'input-file-max-fs' %>
 
-                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold", onchange: "readUrl(this)", data: {title: 'Drag and drop a file'}, id: 'inputFile', 'data-parsley-fileextension': 'doc,docx,odt,pdf', 'data-parsley-filemaxsize': '1.5', 'data-parsley-fileextension-message': "Please select document file", 'data-parsley-trigger': 'change', 'data-parsley-errors-container': ".available_error" %>
+                <%= form.file_field :document_file, class: "form-control-file text-primary font-weight-bold", onchange: "readUrl(this)", data: {title: 'Drag and drop a file'}, id: 'inputFile', 'data-parsley-fileextension': 'doc,docx,csv,txt', 'data-parsley-filemaxsize': '10', 'data-parsley-fileextension-message': "Please select valid file", 'data-parsley-trigger': 'change', 'data-parsley-errors-container': ".available_error" %>
               </div>
+              <div class="available_error mt-2 mb-2"></div>
               <button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('inputFile').click()">Add File</button>
-              <div class="available_error mt-2"></div>
+              
             </div>
           </div>
       </div>
