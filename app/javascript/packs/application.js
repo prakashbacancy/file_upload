@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("parsleyjs")
 require('jquery')
-require('bootstrap')
+import 'bootstrap';
 window.jQuery = $;
 window.$ = $;
 import 'packs/parsley'
