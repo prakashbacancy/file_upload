@@ -8,6 +8,6 @@ class Document < ApplicationRecord
 	after_save :update_name
 
 	def update_name
-		self.update_column(:name,  "#{document_file.name}_#{created_at.strftime("%m-%d-%Y")}")
+		self.update_column(:name,  "#{self.document_file.blob.filename.to_s}_#{created_at.strftime("%m-%d-%Y")}")
 	end
 end
