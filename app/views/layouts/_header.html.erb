@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div id="flashMessage">
-      <%= render 'layouts/flash_messages' %>
+      <%= render "layouts/flash_messages" %>
     </div>
     <div class="container">
       <a class="navbar-brand" href="/">
@@ -46,10 +46,16 @@
             <%= image_tag "user.svg", class: "user-image" %>
           </a>
           <ul class="dropdown-menu">
+          <% if current_user %>
             <li><a class="dropdown-item" href="#">My Account</a></li>
             <li><a class="dropdown-item" href="#">Setting</a></li>
+          <% end %>
             <li>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <% if current_user %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+              <% end %>
             </li>
           </ul>
         </div>
