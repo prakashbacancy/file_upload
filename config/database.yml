@@ -10,7 +10,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
-  password: postgres
-  host:  localhost
-  database: file_upload
+  username: ENV["USERNAME"]
+  password: ENV["PASSWORD"]
+  host:  ENV["HOST"]
+  database: ENV["DATABASE"]
