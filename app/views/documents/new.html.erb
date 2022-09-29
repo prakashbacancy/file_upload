@@ -6,7 +6,7 @@
         <div class="col-xl-8 col-md-10 col-12 mx-auto">
           <div class="shadow upload-wrapper">
             <%= form.hidden_field :file_type, value: params[:file_type] %>
-            <%#= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
             <h4 class="text-primary mb-2">Add Input File</h4>
             <div class="inputDnD">
               <label class="bg-shadow upload-box cursor-pointer text-black d-block text-center position-relative">
