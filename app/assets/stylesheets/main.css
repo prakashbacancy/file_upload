@@ -333,10 +333,6 @@ label {
   box-shadow: 0 0 0 0.25rem #bea01e40;
 }
 
-.login-box .btn {
-  margin-top: 60px;
-}
-
 .upload-box {
   background-image: linear-gradient(180deg, #BEA01E08, #BEA01E14);
   border: 2px dashed var(--bs-graylight);
