@@ -2,6 +2,7 @@
   <div class="container">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'shadow login-box mx-auto text-center'}) do |f| %>
       <%= image_tag "logo-dark.png", class: 'logo' %>
+      <!--
       <h1 class="h4 login-title">Sign In</h1>
       <p class="login-subtitle">Welcome Back, Sign in to continue</p>
       <div class="form-group text-start">
@@ -54,6 +55,7 @@
         </h6>
       <% end %>
       <hr />
+    -->
       <div class="text-center">
         <%- if devise_mapping.omniauthable? %>
           <%- resource_class.omniauth_providers.each do |provider| %>
