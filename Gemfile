@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'azure-storage'
+gem 'azure-storage-blob'
 gem 'omniauth-azure-activedirectory-v2'
 gem 'omniauth-rails_csrf_protection'
 # Use Redis adapter to run Action Cable in production
